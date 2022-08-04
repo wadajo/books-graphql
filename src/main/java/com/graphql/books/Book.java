@@ -16,6 +16,12 @@ public class Book {
         this.pageCount = pageCount;
         this.authorId = authorId;
     }
+    public Book() {
+        this.id = "No encontrado";
+        this.name = "No encontrado";
+        this.pageCount = 0;
+        this.authorId = "No encontrado";
+    }
 
     private static List<Book> books = Arrays.asList(
             new Book("book-1", "Harry Potter and the Philosopher's Stone", 223, "author-1"),
@@ -24,7 +30,7 @@ public class Book {
     );
 
     public static Book getById(String id) {
-        return books.stream().filter(book -> book.getId().equals(id)).findFirst().orElseGet(()->null);
+        return books.stream().filter(book -> book.getId().equals(id)).findFirst().orElseGet(Book::new);
     }
 
     public String getId() {

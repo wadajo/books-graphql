@@ -14,6 +14,11 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    public Author() {
+        this.id = "No encontrado";
+        this.firstName = "No encontrado";
+        this.lastName = "No encontrado";
+    }
 
     private static List<Author> authors = Arrays.asList(
             new Author("author-1", "Joanne", "Rowling"),
@@ -22,7 +27,7 @@ public class Author {
     );
 
     public static Author getById(String id) {
-        return authors.stream().filter(author -> author.getId().equals(id)).findFirst().orElseGet(()->null);
+        return authors.stream().filter(author -> author.getId().equals(id)).findFirst().orElseGet(Author::new);
     }
 
     public String getId() {
