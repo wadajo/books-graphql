@@ -22,7 +22,7 @@ public class Author {
     );
 
     public static Author getById(String id) {
-        return authors.stream().filter(author -> author.getId().equals(id)).findFirst().orElse(null);
+        return authors.stream().filter(author -> author.getId().equals(id)).findFirst().orElseGet(()->null);
     }
 
     public String getId() {

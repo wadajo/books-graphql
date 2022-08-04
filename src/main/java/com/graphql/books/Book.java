@@ -24,7 +24,7 @@ public class Book {
     );
 
     public static Book getById(String id) {
-        return books.stream().filter(book -> book.getId().equals(id)).findFirst().orElse(null);
+        return books.stream().filter(book -> book.getId().equals(id)).findFirst().orElseGet(()->null);
     }
 
     public String getId() {
